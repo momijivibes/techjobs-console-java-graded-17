@@ -23,10 +23,11 @@ public class JobData {
     /**
      * Fetch list of all values from loaded data,
      * without duplicates, for a given column.
-     *
+
      * @param field The column to retrieve values from
      * @return List of all of the values of the given field
      */
+
     public static ArrayList<String> findAll(String field) {
 
         // load data, if not already loaded
@@ -64,6 +65,7 @@ public class JobData {
      * @param value Value of teh field to search for
      * @return List of all jobs matching the criteria
      */
+
     public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
 
         // load data, if not already loaded
@@ -75,32 +77,47 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue.equalsIgnoreCase(value)) {
                 jobs.add(row);
             }
         }
 
         return jobs;
     }
+    /**        Task 2: Search all columns for the given term:
 
-    /**
-     * Search all columns for the given term
-     *
      * @param value The search term to look for
      * @return      List of all jobs with at least one field containing the value
-     */
+    */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
         // load data, if not already loaded
         loadData();
 
-        // TODO - implement this method
-        return null;
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        //iterate over each row
+        for (HashMap<String, String> row : allJobs) {
+            //iterate over each value in that row
+            for (String columnValue = row.values()) {
+                //check if column value contains search value (add case sensitivity**)
+                if (columnValue != null && columnValue.equalsIgnoreCase(value)) {
+                    //Check if jobs list does not contain row
+                    if (!jobs.contains(row)) {
+                        // if it is not contained, add row to jobs list
+                        jobs.add(row)
+                    }
+                }
+            }
+        }
+
+        return jobs;
     }
+
+
 
     /**
      * Read in data from a CSV file and store it in a list
-     */
+     *
     private static void loadData() {
 
         // Only load data once

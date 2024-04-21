@@ -6,6 +6,8 @@ import java.io.PrintStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
@@ -69,6 +71,7 @@ public class TechJobsTest {
         String expected = getFileContents("src/test/resources/testCaseInsensitiveSearch.txt");
         assertEquals(expected.replaceAll("\r\n?", "\n"), output.replaceAll("\r\n?", "\n"));
     }
+
 
 
 }

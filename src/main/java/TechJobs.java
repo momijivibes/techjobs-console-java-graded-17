@@ -12,7 +12,7 @@ public class TechJobs {
 
     public static void main (String[] args) {
 
-        // Initialize our field map with key/name pairs
+        // Initialize our field map with key/nam  e pairs
         HashMap<String, String> columnChoices = new HashMap<>();
         columnChoices.put("core competency", "Skill");
         columnChoices.put("employer", "Employer");
@@ -117,9 +117,53 @@ public class TechJobs {
         return choiceKeys[choiceIdx];
     }
 
-    // Print a list of jobs
+    // Task 1: Print a list of jobs
+
+/*
+*****
+position type: Data Scientist / Business Intelligence
+name: Sr. IT Analyst (Data/BI)
+employer: Bull Moose Industries
+location: Saint Louis
+core competency: Statistical Analysis
+*****
+*
+
+for no results:
+
+Search term:
+Example Search Term with No Results
+No Results
+View jobs by (type 'x' to quit):
+0 - Search
+1 - List
+
+* to do:
+create a nested loop to iterate over each Hashmap
+if else no results - take back to the top?
+
+*
+ */
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+        if (someJobs == null || someJobs.isEmpty()) {
+            System.out.println("Search term:\n" +
+                    "Example Search Term with No Results\n" +
+                    "No Results\n" +
+                    "View jobs by (type 'x' to quit):\n" +
+                    "0 - Search\n" +
+                    "1 - List");
+        }
+
+        for (int i=0; i<someJobs.size(); i++) {
+            System.out.println();
+            HashMap<String, String> jobMap = someJobs.get(i);
+
+            System.out.println("*****");
+            for (String key : jobMap.keySet()) {
+                System.out.println(key + ": " + jobMap.get(key));
+            }
+            System.out.println("*****");
+        }
     }
 }
