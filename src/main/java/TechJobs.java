@@ -12,7 +12,7 @@ public class TechJobs {
 
     public static void main (String[] args) {
 
-        // Initialize our field map with key/nam  e pairs
+        // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
         columnChoices.put("core competency", "Skill");
         columnChoices.put("employer", "Employer");
@@ -29,9 +29,9 @@ public class TechJobs {
 
         // Allow the user to search until they manually quit
         while (true) {
-
+            //prompt user to choose: search or list
             String actionChoice = getUserSelection("View jobs by (type 'x' to quit):", actionChoices);
-
+            //If user chooses to quit --> exit
             if (actionChoice == null) {
                 break;
             } else if (actionChoice.equals("list")) {
@@ -52,7 +52,7 @@ public class TechJobs {
                     }
                 }
 
-            } else { // choice is "search"
+            } else { // choice is "search" (user chooses "search")
 
                 // How does the user want to search (e.g. by skill or employer)
                 String searchField = getUserSelection("Search by:", columnChoices);
@@ -70,7 +70,7 @@ public class TechJobs {
         }
     }
 
-    // ﻿Returns the key of the selected item from the choices Dictionary
+    //Returns the key of the selected item from the choices dictionary
     private static String getUserSelection(String menuHeader, HashMap<String, String> choices) {
 
         int choiceIdx = -1;
@@ -119,42 +119,13 @@ public class TechJobs {
 
     // Task 1: Print a list of jobs
 
-/*
-*****
-position type: Data Scientist / Business Intelligence
-name: Sr. IT Analyst (Data/BI)
-employer: Bull Moose Industries
-location: Saint Louis
-core competency: Statistical Analysis
-*****
-*
-
-for no results:
-
-Search term:
-Example Search Term with No Results
-No Results
-View jobs by (type 'x' to quit):
-0 - Search
-1 - List
-
-* to do:
-create a nested loop to iterate over each Hashmap
-if else no results - take back to the top?
-
-*
- */
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
         if (someJobs == null || someJobs.isEmpty()) {
-            System.out.println("Search term:\n" +
-                    "Example Search Term with No Results\n" +
-                    "No Results\n" +
-                    "View jobs by (type 'x' to quit):\n" +
-                    "0 - Search\n" +
-                    "1 - List");
+            System.out.print("No Results");
         }
 
+//if results; iterate over each job
         for (int i=0; i<someJobs.size(); i++) {
             System.out.println();
             HashMap<String, String> jobMap = someJobs.get(i);

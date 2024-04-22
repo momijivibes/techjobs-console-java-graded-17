@@ -98,13 +98,14 @@ public class JobData {
         //iterate over each row
         for (HashMap<String, String> row : allJobs) {
             //iterate over each value in that row
-            for (String columnValue = row.values()) {
+            for (String columnValue : row.values()) {
                 //check if column value contains search value (add case sensitivity**)
-                if (columnValue != null && columnValue.equalsIgnoreCase(value)) {
+                if (columnValue != null && columnValue.toLowerCase().contains(value.toLowerCase())) {
                     //Check if jobs list does not contain row
                     if (!jobs.contains(row)) {
                         // if it is not contained, add row to jobs list
-                        jobs.add(row)
+                        jobs.add(row);
+                        break;
                     }
                 }
             }
@@ -115,9 +116,6 @@ public class JobData {
 
 
 
-    /**
-     * Read in data from a CSV file and store it in a list
-     *
     private static void loadData() {
 
         // Only load data once
